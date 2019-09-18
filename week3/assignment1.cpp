@@ -1,13 +1,12 @@
 #include <iostream>
 
 int bss;
-
+static int data = 1;
 int code(){
 return 0;
 }
 
 int main(){
-	static int data = 1;
 	int * heap = new int[5];
 	int stack;
 
