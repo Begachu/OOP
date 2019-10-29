@@ -22,6 +22,7 @@ void shared_mut::release(){
 		_mgr->~mgr();
 		_mgr = nullptr;
 	}
+	_mgr = new mgr();
 }
 Object* shared_mut::get() const{
 	if(_mgr==nullptr){
@@ -39,33 +40,33 @@ shared_mut::~shared_mut() {
     release();
 }
 shared_mut shared_mut::operator+(const shared_mut &shared){
-	Object o1 = *this->get();
+	Object* o1 = get();
 	Object* o2 = shared.get();
-	int x = o1.get() + o2->get();
+	int x = o1->get() + o2->get();
 	Object* o3 = new Object(x);
 	shared_mut s = shared_mut(o3);
 	return s;
 }
 shared_mut shared_mut::operator-(const shared_mut &shared){
-	Object o1 = *this->get();
+	Object* o1 = get();
     Object* o2 = shared.get();
-    int x = o1.get() - o2->get();
+    int x = o1->get() - o2->get();
     Object* o3 = new Object(x);
     shared_mut s = shared_mut(o3);
 	return s;
 }
 shared_mut shared_mut::operator*(const shared_mut &shared){
-	Object o1 = *this->get();
+	Object* o1 = get();
     Object* o2 = shared.get();
-    int x = o1.get() * o2->get();
+    int x = o1->get() * o2->get();
     Object* o3 = new Object(x);
     shared_mut s = shared_mut(o3);
 	return s;
 }
 shared_mut shared_mut::operator/(const shared_mut &shared){
-	Object o1 = *this->get();
+	Object* o1 = get();
     Object* o2 = shared.get();
-    int x = o1.get() / o2->get();
+    int x = o1->get() / o2->get();
     Object* o3 = new Object(x);
     shared_mut s = shared_mut(o3);
     return s;
