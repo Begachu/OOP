@@ -12,6 +12,10 @@ shared_mut::shared_mut() {
 shared_mut::shared_mut(Object* _obj) {
     _mgr = new mgr(_obj);
 }
+shared_mut::shared_mut(const shared_mut& shared){
+	_mgr=shared._mgr;
+	increase();
+}
 void shared_mut::release(){
 	_mgr->count = count()-1;
 	if(count()==0){
