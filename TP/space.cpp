@@ -11,9 +11,9 @@ int space::setBlock(){
 	puyo = new block();
 	return 0;
 }
-int space::setBlock(block* b){
+int space::setBlock(block& b){
 	if(puyo!=nullptr) return 1;
-	puyo = b;
+	puyo = &b;
 	return 0;
 }
 int space::delBlock(){
@@ -25,9 +25,9 @@ int space::delBlock(){
 block* space::getBlock(){
 	return puyo;
 }
-int space::moveBlock(space& space){
+int space::moveBlock(space& s){
 	if(puyo==nullptr) return 1;
-	space.setBlock(puyo);
+	s.setBlock(*puyo);
 	puyo = nullptr;
 	return 0;
 }

@@ -79,41 +79,49 @@ switch(allow){
 	{
 		for(int y=BORAD::W-1; y>0; y--)
 		{
-			if(borad[y][x].getBlock()==nullptr&&borad[y][x-1].getBlock()->getState()==1)
+			block* temp = borad[y][x-1].getBlock();
+			if(borad[y][x].getBlock()==nullptr&&temp!=nullptr)
 			{
-				borad[y][x-1].moveBlock(borad[y][x]); 
+				if(temp->getState()==1)
+				borad[y][x-1].moveBlock(borad[y][x]);
 			}
 		}
 	}
 	break;
 	case 1: 	//right
-	for(int y=BORAD::W-2; y>0; y--)
-	{
-		for(int x=BORAD::H-1; x>0; x--)
-		{
-			if(borad[y][x].getBlock()==nullptr&&borad[y+1][x-1].getBlock()->getState()==1)
-			{
-				borad[y+1][x-1].moveBlock(borad[y][x]); 
-			}
-		}
-	}
-	break;
-	case 2: 	//left
 	for(int y=BORAD::W-1; y>0; y--)
 	{
 		for(int x=BORAD::H-1; x>0; x--)
-		{	
-			if(borad[y][x].getBlock()==nullptr&&borad[y-1][x-1].getBlock()->getState()==1)
+		{
+			block* temp = borad[y-1][x-1].getBlock();
+			if(borad[y][x].getBlock()==nullptr&&temp!=nullptr)
 			{
+				if(temp->getState()==1)
 				borad[y-1][x-1].moveBlock(borad[y][x]); 
 			}
 		}
 	}
 	break;
+	case 2: 	//left
+	for(int y=0; y<BORAD::W-1; y++)
+	{
+		for(int x=BORAD::H-1; x>0; x--)
+		{
+			block* temp = borad[y+1][x-1].getBlock();
+			if(borad[y][x].getBlock()==nullptr&&temp!=nullptr)
+			{
+				if(temp->getState()==1)
+				borad[y+1][x-1].moveBlock(borad[y][x]); 
+			}
+		}
+	}
 }
 return 0;
 }
-
+int puyoGame::setStop(){
+	
+	return 0;
+}
 void puyoGame::print(){
 	//std::cout << "test print" <<std::endl;
 	system("clear");

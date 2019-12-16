@@ -9,7 +9,7 @@ class space
 	public:
 		space();
 		int setBlock();
-		int setBlock(block*);
+		int setBlock(block&);
 		block* getBlock();
 		int delBlock();
 		int moveBlock(space&);
